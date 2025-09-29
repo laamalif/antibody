@@ -1,6 +1,6 @@
 package bundle
 
-import "github.com/getantibody/antibody/project"
+import "github.com/laamalif/antibody/project"
 
 type cloneBundle struct {
 	Project project.Project

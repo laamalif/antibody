@@ -3,7 +3,7 @@ package bundle
 import (
 	"fmt"
 
-	"github.com/getantibody/antibody/project"
+	"github.com/laamalif/antibody/project"
 )
 
 type fpathBundle struct {

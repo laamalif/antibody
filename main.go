@@ -12,12 +12,12 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/getantibody/antibody/antibodylib"
-	"github.com/getantibody/antibody/project"
-	"github.com/getantibody/antibody/shell"
+	"github.com/laamalif/antibody/antibodylib"
+	"github.com/laamalif/antibody/project"
+	"github.com/laamalif/antibody/shell"
 	"github.com/getantibody/folder"
 	"golang.org/x/crypto/ssh/terminal"
-	"gopkg.in/alecthomas/kingpin.v2"
+    "github.com/alecthomas/kingpin/v2"
 )
 
 // nolint: gochecknoglobals

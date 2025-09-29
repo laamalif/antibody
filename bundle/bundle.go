@@ -3,7 +3,7 @@ package bundle
 import (
 	"strings"
 
-	"github.com/getantibody/antibody/project"
+	"github.com/laamalif/antibody/project"
 )
 
 // Bundle main interface.

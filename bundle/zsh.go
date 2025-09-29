@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/getantibody/antibody/project"
+	"github.com/laamalif/antibody/project"
 )
 
 type zshBundle struct {
