@@ -7,9 +7,31 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
-
-	"github.com/getantibody/folder"
 )
+
+var replaces = []struct{ a, b string }{
+	{":", "-COLON-"},
+	{"/", "-SLASH-"},
+	{"@", "-AT-"},
+}
+
+// FromURL converts the given URL to a folder name
+func FromURL(url string) string {
+	result := url
+	for _, replace := range replaces {
+		result = strings.Replace(result, replace.a, replace.b, -1)
+	}
+	return result
+}
+
+// ToURL converts the given folder to an URL
+func ToURL(folder string) string {
+	result := folder
+	for _, replace := range replaces {
+		result = strings.Replace(result, replace.b, replace.a, -1)
+	}
+	return result
+}
 
 // nolint: gochecknoglobals
 var gitCmdEnv = append(os.Environ(), "GIT_TERMINAL_PROMPT=0", "GIT_ASKPASS=0", "SSH_ASKPASS=0")
@@ -29,7 +51,7 @@ func NewClonedGit(home, folderName string) Project {
 	if err != nil {
 		version = ""
 	}
-	url := folder.ToURL(folderName)
+	url := ToURL(folderName)
 	return gitProject{
 		folder:  folderPath,
 		Version: version,
@@ -72,7 +94,7 @@ func NewGit(cwd, line string) Project {
 	case strings.HasPrefix(repo, "git@github.com:"):
 		url = repo
 	}
-	folder := filepath.Join(cwd, folder.FromURL(url))
+	folder := filepath.Join(cwd, FromURL(url))
 	return gitProject{
 		Version: version,
 		URL:     url,

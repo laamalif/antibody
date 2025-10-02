@@ -2,7 +2,6 @@ module github.com/laamalif/antibody
 
 require (
 	github.com/alecthomas/kingpin/v2 v2.4.0
-	github.com/getantibody/folder v1.0.0
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/crypto v0.42.0
 	golang.org/x/sync v0.17.0
@@ -22,4 +21,3 @@ require (
 go 1.24.0
 
 toolchain go1.24.6
-

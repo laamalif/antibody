@@ -15,7 +15,6 @@ import (
 	"github.com/laamalif/antibody/antibodylib"
 	"github.com/laamalif/antibody/project"
 	"github.com/laamalif/antibody/shell"
-	"github.com/getantibody/folder"
 	"golang.org/x/crypto/ssh/terminal"
     "github.com/alecthomas/kingpin/v2"
 )
@@ -113,7 +112,7 @@ func list() {
 	app.FatalIfError(err, "failed to list bundles")
 	w := tabwriter.NewWriter(os.Stdout, 0, 1, 4, ' ', tabwriter.TabIndent)
 	for _, b := range projects {
-		fmt.Fprintf(w, "%s\t%s\n", folder.ToURL(b), filepath.Join(home, b))
+		fmt.Fprintf(w, "%s\t%s\n", project.ToURL(b), filepath.Join(home, b))
 	}
 	app.FatalIfError(w.Flush(), "failed to flush")
 }

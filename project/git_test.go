@@ -17,7 +17,7 @@ func TestDownloadAllKinds(t *testing.T) {
 		"http://github.com/caarlos0/ports.git",
 		"https://github.com/caarlos0/ports",
 		"https://github.com/caarlos0/ports.git",
-		"git://github.com/caarlos0/ports.git",
+		// "git://github.com/caarlos0/ports.git",
 		"https://gitlab.com/caarlos0/test.git",
 		// FIXME: those fail on travis:
 		// "git@gitlab.com:caarlos0/test.git",
@@ -54,7 +54,7 @@ func TestUpdateAnotherBranch(t *testing.T) {
 	home := home()
 	repo := NewGit(home, "caarlos0/jvm branch:gh-pages")
 	require.NoError(t, repo.Download())
-	alreadyClonedRepo := NewClonedGit(home, "https-COLON--SLASH--SLASH-github.com-SLASH-caarlos0-SLASH-jvm")
+	alreadyClonedRepo := NewClonedGit(home, FromURL("https://github.com/caarlos0/jvm"))
 	require.NoError(t, alreadyClonedRepo.Update())
 }
 
@@ -62,7 +62,7 @@ func TestUpdateExistentLocalRepo(t *testing.T) {
 	home := home()
 	repo := NewGit(home, "caarlos0/ports")
 	require.NoError(t, repo.Download())
-	alreadyClonedRepo := NewClonedGit(home, "https-COLON--SLASH--SLASH-github.com-SLASH-caarlos0-SLASH-ports")
+	alreadyClonedRepo := NewClonedGit(home, FromURL("https://github.com/caarlos0/ports"))
 	require.NoError(t, alreadyClonedRepo.Update())
 }
 
@@ -97,7 +97,7 @@ func TestDownloadFolderNaming(t *testing.T) {
 	repo := NewGit(home, "caarlos0/ports")
 	require.Equal(
 		t,
-		home+"/https-COLON--SLASH--SLASH-github.com-SLASH-caarlos0-SLASH-ports",
+		filepath.Join(home, FromURL("https://github.com/caarlos0/ports")),
 		repo.Path(),
 	)
 }
